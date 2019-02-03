@@ -35,7 +35,9 @@ class Configuration implements ConfigurationInterface
                         ->arrayNode('twig')
                             ->addDefaultsIfNotSet()
                             ->children()
-                                ->scalarNode('template_path')->defaultValue('example')->end()
+                                ->scalarNode('template_path')
+                                ->defaultValue('%kernel.root_dir%/vendor/unigen/unigen/src/Resources/views/sut_template.php.twig')
+                                ->end()
                             ->end()
                          ->end()
                 ->end();

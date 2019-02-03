@@ -37,7 +37,7 @@ class TestGeneratorCommand extends Command
      */
     protected function execute(InputInterface $input, OutputInterface $output)
     {
-        $this->testGenerator->generate($input->getArgument('path'));
+        $this->testGenerator->generate($input->getArgument('sut_path'));
 
         return 0;
     }
