@@ -1,0 +1,53 @@
+<?xml version="1.0" ?>
+
+<container xmlns="http://symfony.com/schema/dic/services"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
+
+    <services>
+        <service id="unigen.test_generator" class="UniGen\TestGenerator">
+            <argument type="service" id="unigen.config" />
+            <argument type="service" id="unigen.renderer.twig" />
+            <argument type="service" id="unigen.file_system.native" />
+            <argument type="service" id="unigen.sut.provider.reflection" />
+        </service>
+
+        <service id="unigen.config" class="UniGen\Config">
+            <argument>%unigen.parent_test_case%</argument>
+            <argument>%unigen.mock_object_framework%</argument>
+            <argument>%unigen.test_target_path_pattern%</argument>
+            <argument>%unigen.test_target_path_replacement_pattern%</argument>
+            <argument>%unigen.namespace_pattern%</argument>
+            <argument>%unigen.namespace_replacement_pattern%</argument>
+        </service>
+
+        <service id="unigen.renderer.twig" class="UniGen\Renderer\TwigRenderer">
+            <argument>%unigen.file_system.twig.template%</argument>
+            <argument type="service" id="twig" />
+            <argument type="service" id="unigen.config" />
+        </service>
+
+        <service id="unigen.renderer.decorator.namespace" class="UniGen\Renderer\Decorator\NamespaceDecorator">
+            <argument type="service" id="unigen.config" />
+        </service>
+
+        <service id="unigen.sut.provider.reflection" class="UniGen\Sut\Provider\ReflectionSutProvider">
+            <argument type="service" id="unigen.sut.validator" />
+        </service>
+
+        <service id="unigen.sut.validator" class="UniGen\Sut\SutValidator">
+            <call method="addCheck">
+                <argument type="service" id="unigen.sut.check.abstract" />
+                <argument type="service" id="unigen.sut.check.trait" />
+                <argument type="service" id="unigen.sut.check.interface" />
+            </call>
+        </service>
+
+        <service id="unigen.sut.check.trait" class="UniGen\Sut\Check\TraitCheck"/>
+        <service id="unigen.sut.check.abstract" class="UniGen\Sut\Check\AbstractCheck"/>
+        <service id="unigen.sut.check.interface" class="UniGen\Sut\Check\InterfaceCheck"/>
+        <service id="unigen.file_system.native" class="UniGen\FileSystem\NativeFileSystem"/>
+        <service id="unigen.sut.adapter.reflection" class="UniGen\Sut\Adapter\ReflectionSutAdapter"/>
+        <service id="unigen.sut.adapter.reflection_dependency" class="UniGen\Sut\Adapter\ReflectionSutDependencyAdapter"/>
+    </services>
+</container>

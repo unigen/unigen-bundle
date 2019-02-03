@@ -1,0 +1,11 @@
+{
+    "name": "unigen/unigen-bundle",
+    "description": "Symfony bundle for unigen test generator",
+    "require": {
+        "symfony/framework-bundle": "^4.2",
+        "unigen/unigen": "^0.1.0"
+    },
+    "autoload": {
+        "psr-4": { "UniGen\\Bundle\\UniGenBundle\\": "" }
+    }
+}
