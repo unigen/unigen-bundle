@@ -20,7 +20,7 @@ class TestGeneratorCommand extends Command
     {
         $this->testGenerator = $testGenerator;
 
-        parent::__construct('unigen:generate');
+        parent::__construct();
     }
 
     /**
@@ -28,7 +28,9 @@ class TestGeneratorCommand extends Command
      */
     protected function configure()
     {
-        $this->addArgument('sut_path', InputArgument::REQUIRED, 'Full path to class you want to test');
+        $this
+            ->setName('unigen:generate')
+            ->addArgument('sut_path', InputArgument::REQUIRED, 'Full path to class you want to test');
     }
 
 
