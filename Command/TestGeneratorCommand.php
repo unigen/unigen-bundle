@@ -33,7 +33,6 @@ class TestGeneratorCommand extends Command
             ->addArgument('sut_path', InputArgument::REQUIRED, 'Full path to class you want to test');
     }
 
-
     /**
      * {@inheritdoc}
      */
@@ -41,8 +40,8 @@ class TestGeneratorCommand extends Command
     {
         $this->testGenerator->generate($input->getArgument('sut_path'));
 
+        $output->write("<info>Test file {$input->getArgument('sut_path')} has been generated successfully</info>");
+
         return 0;
     }
-
-
 }

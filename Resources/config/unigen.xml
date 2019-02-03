@@ -48,11 +48,6 @@
             <tag name="console.command" />
         </service>
 
-        <service id="unigen.command.generator" class="UniGen\Bundle\UniGenBundle\DependencyInjection\Compiler\GeneratorTemplatePass">
-            <argument type="service" id="unigen.compiler.generator_template" />
-            <tag name="console.command" />
-        </service>
-
         <service id="unigen.sut.check.trait" class="UniGen\Sut\Check\TraitCheck"/>
         <service id="unigen.sut.check.abstract" class="UniGen\Sut\Check\AbstractCheck"/>
         <service id="unigen.sut.check.interface" class="UniGen\Sut\Check\InterfaceCheck"/>

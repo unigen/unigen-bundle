@@ -26,15 +26,18 @@ class UniGenExtension extends Extension
 
         $container->setParameter('unigen.test_target_path_pattern', $config['config']['test_target_path_pattern']);
 
-        $container->setParameter('unigen.test_target_path_replacement_pattern',
-            $config['config']['test_target_path_replacement_pattern']);
+        $container->setParameter(
+            'unigen.test_target_path_replacement_pattern',
+            $config['config']['test_target_path_replacement_pattern']
+        );
 
         $container->setParameter('unigen.namespace_pattern', $config['config']['namespace_pattern']);
 
-        $container->setParameter('unigen.namespace_replacement_pattern',
-            $config['config']['namespace_replacement_pattern']);
+        $container->setParameter(
+            'unigen.namespace_replacement_pattern',
+            $config['config']['namespace_replacement_pattern']
+        );
 
         $container->setParameter('unigen.file_system.twig.template', $config['file_system']['twig']['template_path']);
     }
-
 }
