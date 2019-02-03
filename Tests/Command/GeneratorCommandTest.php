@@ -24,7 +24,7 @@ class GeneratorCommandTest extends TestCase
     /**
      * {@inheritdoc}
      */
-    public function setUp(): void
+    public function setUp()
     {
         $this->application = new Application();
         $this->testGeneratorMock = Mockery::mock(TestGenerator::class);
