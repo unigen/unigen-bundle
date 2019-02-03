@@ -12,9 +12,9 @@ class Configuration implements ConfigurationInterface
      */
     public function getConfigTreeBuilder()
     {
-        $treeBuilder = new TreeBuilder();
+        $treeBuilder = new TreeBuilder('uni_gen');
 
-        $rootNode = $treeBuilder->root('unigen');
+        $rootNode = $treeBuilder->root('uni_gen');
 
         $rootNode
             ->children()
@@ -27,12 +27,18 @@ class Configuration implements ConfigurationInterface
                         ->scalarNode('test_target_path_replacement_pattern')->defaultValue('tests/${1}Test')->end()
                         ->scalarNode('namespace_pattern')->defaultValue('/([a-zA-Z]+\\)(.*)')->end()
                         ->scalarNode('namespace_replacement_pattern')->defaultValue('${1}Test\\{$2}')->end()
+                    ->end()
+                ->end()
                 ->arrayNode('file_system')
+                    ->addDefaultsIfNotSet()
                     ->children()
                         ->arrayNode('twig')
                             ->addDefaultsIfNotSet()
                             ->children()
-                                ->scalarNode('template_path')->defaultValue('example')->end();
+                                ->scalarNode('template_path')->defaultValue('example')->end()
+                            ->end()
+                         ->end()
+                ->end();
 
         return $treeBuilder;
     }
