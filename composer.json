@@ -8,5 +8,9 @@
     },
     "autoload": {
         "psr-4": { "UniGen\\Bundle\\UniGenBundle\\": "" }
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^6.5",
+        "mockery/mockery": "^1.2"
     }
 }
