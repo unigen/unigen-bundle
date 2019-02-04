@@ -3,3 +3,4 @@ vendor/
 .git
 composer.lock
 .phpunit.result.cache
+coverage.xml
