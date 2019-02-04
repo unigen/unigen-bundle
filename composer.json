@@ -1,6 +1,7 @@
 {
     "name": "unigen/unigen-bundle",
     "description": "Symfony bundle for unigen test generator",
+    "license": "MIT",
     "require": {
         "symfony/framework-bundle": "^3.4|^4.0",
         "unigen/unigen": "^0.1.0",
