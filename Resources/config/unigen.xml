@@ -6,10 +6,10 @@
 
     <services>
         <service id="unigen.test_generator" class="UniGen\TestGenerator">
-            <argument type="service" id="unigen.config" />
-            <argument type="service" id="unigen.renderer.twig" />
-            <argument type="service" id="unigen.file_system.native" />
-            <argument type="service" id="unigen.sut.provider.reflection" />
+            <argument type="service" id="unigen.config"/>
+            <argument type="service" id="unigen.renderer.twig"/>
+            <argument type="service" id="unigen.file_system.native"/>
+            <argument type="service" id="unigen.sut.provider.reflection"/>
         </service>
 
         <service id="unigen.config" class="UniGen\Config">
@@ -23,29 +23,32 @@
 
         <service id="unigen.renderer.twig" class="UniGen\Renderer\TwigRenderer">
             <argument>%unigen.file_system.twig.template%</argument>
-            <argument type="service" id="twig" />
-            <argument type="service" id="unigen.config" />
+            <argument type="service" id="twig"/>
+            <argument type="service" id="unigen.config"/>
+            <call method="addDecorator">
+                <argument type="service" id="unigen.renderer.decorator.namespace"/>
+            </call>
         </service>
 
         <service id="unigen.renderer.decorator.namespace" class="UniGen\Renderer\Decorator\NamespaceDecorator">
-            <argument type="service" id="unigen.config" />
+            <argument type="service" id="unigen.config"/>
         </service>
 
         <service id="unigen.sut.provider.reflection" class="UniGen\Sut\Provider\ReflectionSutProvider">
-            <argument type="service" id="unigen.sut.validator" />
+            <argument type="service" id="unigen.sut.validator"/>
         </service>
 
         <service id="unigen.sut.validator" class="UniGen\Sut\SutValidator">
             <call method="addCheck">
-                <argument type="service" id="unigen.sut.check.abstract" />
-                <argument type="service" id="unigen.sut.check.trait" />
-                <argument type="service" id="unigen.sut.check.interface" />
+                <argument type="service" id="unigen.sut.check.abstract"/>
+                <argument type="service" id="unigen.sut.check.trait"/>
+                <argument type="service" id="unigen.sut.check.interface"/>
             </call>
         </service>
 
         <service id="unigen.command.generator" class="UniGen\Bundle\UniGenBundle\Command\TestGeneratorCommand">
-            <argument type="service" id="unigen.test_generator" />
-            <tag name="console.command" />
+            <argument type="service" id="unigen.test_generator"/>
+            <tag name="console.command"/>
         </service>
 
         <service id="unigen.sut.check.trait" class="UniGen\Sut\Check\TraitCheck"/>
@@ -53,6 +56,7 @@
         <service id="unigen.sut.check.interface" class="UniGen\Sut\Check\InterfaceCheck"/>
         <service id="unigen.file_system.native" class="UniGen\FileSystem\NativeFileSystem"/>
         <service id="unigen.sut.adapter.reflection" class="UniGen\Sut\Adapter\ReflectionSutAdapter"/>
-        <service id="unigen.sut.adapter.reflection_dependency" class="UniGen\Sut\Adapter\ReflectionSutDependencyAdapter"/>
+        <service id="unigen.sut.adapter.reflection_dependency"
+                 class="UniGen\Sut\Adapter\ReflectionSutDependencyAdapter"/>
     </services>
 </container>
