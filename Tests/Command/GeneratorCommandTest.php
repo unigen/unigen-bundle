@@ -32,9 +32,8 @@ class GeneratorCommandTest extends TestCase
         $this->sut = new TestGeneratorCommand($this->testGeneratorMock);
     }
 
-    public function testExecute()
+    public function testExecuteShouldCreateTestAndCommunicateCorrectMessage()
     {
-        $this->application->setAutoExit(false);
         $this->application->add($this->sut);
 
         $this->testGeneratorMock
@@ -50,5 +49,22 @@ class GeneratorCommandTest extends TestCase
             'Test file dir/sutPath.php has been generated successfully',
             $commandTester->getDisplay()
         );
+    }
+
+    public function testExecuteShouldShowErrorMessageWhenFail()
+    {
+        $this->application->add($this->sut);
+
+        $this->testGeneratorMock
+            ->shouldReceive('generate')
+            ->with('dir/sutPath.php')
+            ->andThrow(\InvalidArgumentException::class, 'error-message');
+
+        $commandTester = new CommandTester($this->application->find('unigen:generate'));
+
+        $result = $commandTester->execute(['sut_path' => 'dir/sutPath.php']);
+
+        $this->assertEquals(1, $result);
+        $this->assertEquals('error-message', $commandTester->getDisplay());
     }
 }

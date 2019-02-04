@@ -10,6 +10,9 @@ use UniGen\TestGenerator;
 
 class TestGeneratorCommand extends Command
 {
+    const ERROR_CODE = 1;
+    const SUCCESS_CODE = 0;
+
     /** @var TestGenerator */
     private $testGenerator;
 
@@ -38,10 +41,15 @@ class TestGeneratorCommand extends Command
      */
     protected function execute(InputInterface $input, OutputInterface $output)
     {
-        $this->testGenerator->generate($input->getArgument('sut_path'));
+        try {
+            $this->testGenerator->generate($input->getArgument('sut_path'));
+            $output->write("<info>Test file {$input->getArgument('sut_path')} has been generated successfully</info>");
 
-        $output->write("<info>Test file {$input->getArgument('sut_path')} has been generated successfully</info>");
+            return self::SUCCESS_CODE;
+        } catch (\Exception $exception) {
+            $output->write("<error>{$exception->getMessage()}</error>");
 
-        return 0;
+            return self::ERROR_CODE;
+        }
     }
 }
