@@ -18,7 +18,7 @@
     ],
     "require": {
         "symfony/framework-bundle": "^3.4|^4.0",
-        "unigen/unigen": "~0.1.0",
+        "unigen/unigen": "~0.2.0",
         "symfony/console": "^3.4|^4.0"
     },
     "autoload": {
