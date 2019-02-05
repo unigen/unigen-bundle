@@ -38,6 +38,7 @@ class UniGenExtension extends Extension
             $config['config']['namespace_replacement_pattern']
         );
 
-        $container->setParameter('unigen.file_system.twig.template', $config['file_system']['twig']['template_path']);
+        $container->setParameter('unigen.file_system.twig.template', $config['file_system']['twig']['template']);
+        $container->setParameter('unigen.file_system.twig.template_dir', $config['file_system']['twig']['template_dir']);
     }
 }
