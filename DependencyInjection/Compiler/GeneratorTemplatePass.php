@@ -7,8 +7,6 @@ use Symfony\Component\DependencyInjection\Compiler\CompilerPassInterface;
 
 class GeneratorTemplatePass implements CompilerPassInterface
 {
-    const TEMPLATE_PATH = '/../vendor/unigen/unigen/src/Resources/views';
-
     /**
      * {@inheritdoc}
      */
@@ -18,7 +16,7 @@ class GeneratorTemplatePass implements CompilerPassInterface
             $container
                 ->getDefinition('twig.loader.filesystem')
                 ->addMethodCall('addPath', [
-                    $container->getParameter('kernel.root_dir') . self::TEMPLATE_PATH
+                    $container->getParameter('template_dir')
                 ]);
         }
     }
