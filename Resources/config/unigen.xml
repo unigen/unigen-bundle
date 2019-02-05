@@ -51,6 +51,10 @@
             <tag name="console.command"/>
         </service>
 
+        <service id="unigen.util.scalar_render_filter" class="UniGen\Util\ScalarValueMapperTwigFilter">
+            <tag name="twig.extension"/>
+        </service>
+
         <service id="unigen.sut.check.trait" class="UniGen\Sut\Check\TraitCheck"/>
         <service id="unigen.sut.check.abstract" class="UniGen\Sut\Check\AbstractCheck"/>
         <service id="unigen.sut.check.interface" class="UniGen\Sut\Check\InterfaceCheck"/>

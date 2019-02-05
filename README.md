@@ -46,6 +46,7 @@ uni_gen:
   file_system:
     twig:
       template: 'sut_template.php.twig'
+      template_dir: 'sut_template.php.twig'
 ```
 
 * `parent_test_case` - Parent class that will be extend in generated test
@@ -54,7 +55,7 @@ uni_gen:
 * `test_target_path_replacement_pattern` - Test directory replacement patter that will be used to generate target test path
 * `namespace_pattern` - SUT namespace pattern
 * `namespace_replacement_pattern` - Test namespace replacement patter that will be used to generate target test namepsace
-* `template` Template used to generate test
+* `template` Template used to generate test, twig namespace syntax is supported e.g. `@AcmeBlog/Blog/index.html.twig` for more read twig documentation
 
 For example by default target namespace will add `Test` sufix to SUT namespace. So `Organization\ExampleClass` will generate test with namespace `Organization\Test\ExampleClass` in directory `./test/Organization/ExampleClassTest.php`. If you want to change namespace or target test directory just proper regexp in configuration file.
 
