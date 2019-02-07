@@ -7,58 +7,20 @@
 ### UniGenBundle
 UniGenBundle is a Symfony bundle that integrates [UniGen](https://github.com/unigen/unigen) a unit test generator for PHP which automatically generates unit tests for your classes.
 
-### Installation
+### Features
 
-* `composer require --dev unigen/unigen-bundle`
-* Enable bundle in your kernel file
+* Support mockery and phpunit mocks
+* Configurable test source target directory pattern
+* Configurable namespace pattern
+* Template and template directory path can be configure
+* Configurable parent test case
 
-### How to use
+### Documentation
 
-Just run command from cli
-
-```bash
-bin/console unigen:generate ./src/Controller/Example.php
-```
-
-or integrate it with IDE
-
-##### PHPStorm integration
-
-* File > Settings > Tools > External Tools
-* Click green add icon
-* Name it like you wish
-* In `Program` input select your project bin/console path
-* Under `Arguments` input paste unigen:generate $FilePath$
-* Select your working directory
-* To run generator for given class just click Tools > External Tools 
-
-
-### Configuration
-
-```yml
-uni_gen:
-  config:
-    parent_test_case: 'TestCase'
-    mock_object_framework: 'mockery'
-    test_target_path_pattern: '/src\/([a-zA-Z\/]+)/'
-    test_target_path_replacement_pattern: 'tests/${1}Test'
-    namespace_pattern: '/([a-zA-Z]+\\)(.*)'
-    namespace_replacement_pattern: '${1}Test\\{$2}'
-  file_system:
-    twig:
-      template: 'sut_template.php.twig'
-      template_dir: './Resources/config/views'
-```
-
-* `parent_test_case` - Parent class that will be extend in generated test
-* `mock_object_framework` - Test framework mockery or phpunit
-* `test_target_path_pattern` - SUT directory regexp pattern
-* `test_target_path_replacement_pattern` - Test directory replacement patter that will be used to generate target test path
-* `namespace_pattern` - SUT namespace pattern
-* `namespace_replacement_pattern` - Test namespace replacement patter that will be used to generate target test namepsace
-* `template` Template used to generate test, twig namespace syntax is supported e.g. `@AcmeBlog/Blog/index.html.twig` for more read twig documentation
-
-For example by default target namespace will add `Test` sufix to SUT namespace. So `Organization\ExampleClass` will generate test with namespace `Organization\Test\ExampleClass` in directory `./test/Organization/ExampleClassTest.php`. If you want to change namespace or target test directory just proper regexp in configuration file.
+* [Installation](Resources/doc/1-installation.md)
+* [Configuration](Resources/doc/2-configuration.md)
+* [How to use](Resources/doc/3-how-to-use.md)
+* [IDE integration](Resources/doc/4-integration.md)
 
 ### License
 This bundle is available under the MIT license.
