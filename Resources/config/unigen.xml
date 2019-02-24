@@ -11,8 +11,8 @@
                 <argument key="mockFramework">%unigen.mock_framework%</argument>
                 <argument key="pathPattern">%unigen.path_pattern%</argument>
                 <argument key="pathPatternReplacement">%unigen.path_replacement_pattern%</argument>
-                <argument key="templateName">%unigen.render.twig.template%</argument>
-                <argument key="templateDirPath">%unigen.render.twig.template_dir%</argument>
+                <argument key="template">%unigen.render.twig.template%</argument>
+                <argument key="templateDir">%unigen.render.twig.template_dir%</argument>
                 <argument key="namespacePattern">%unigen.namespace_pattern%</argument>
                 <argument key="namespacePatternReplacement">%unigen.namespace_replacement_pattern%</argument>
             </argument>
