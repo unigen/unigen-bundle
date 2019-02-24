@@ -59,7 +59,6 @@
 
         <service id="unigen.twig" class="Twig\Environment" public="true">
             <argument type="service" id="unigen.twig.loader" />
-            <argument/>
             <call method="addExtension">
                 <argument type="service" id="unigen.util.scalar_render_filter"/>
             </call>
