@@ -5,7 +5,7 @@
            xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
 
     <services>
-        <service id="unigen.config" class="UniGen\Config">
+        <service id="unigen.config" class="UniGen\Config\Config">
             <argument type="collection">
                 <argument key="testCase">%unigen.test_case%</argument>
                 <argument key="mockFramework">%unigen.mock_framework%</argument>
