@@ -19,7 +19,7 @@
         </service>
 
         <service id="unigen.renderer.twig" class="UniGen\Renderer\TwigRenderer">
-            <argument type="service" id="twig"/>
+            <argument type="service" id="unigen.twig"/>
             <argument type="service" id="unigen.config"/>
         </service>
 
@@ -40,9 +40,7 @@
         </service>
 
 
-        <service id="unigen.util.scalar_render_filter" class="UniGen\Util\ScalarValueMapperTwigFilter">
-            <tag name="twig.extension"/>
-        </service>
+        <service id="unigen.util.scalar_render_filter" class="UniGen\Util\ScalarValueMapperTwigFilter"/>
 
         <service id="unigen.command.generator" class="Unigen\Command\TestGeneratorCommand">
             <argument type="service" id="unigen.config"/>
@@ -59,5 +57,19 @@
         <service id="unigen.sut.adapter.reflection" class="UniGen\Sut\Adapter\ReflectionSutAdapter"/>
         <service id="unigen.sut.adapter.reflection_dependency"
                  class="UniGen\Sut\Adapter\ReflectionSutDependencyAdapter"/>
+
+
+        <service id="unigen.twig" class="Twig\Environment" public="true">
+            <argument type="service" id="unigen.twig.loader" />
+            <call method="addExtension">
+                <argument type="service" id="unigen.util.scalar_render_filter"/>
+            </call>
+            <argument/>
+        </service>
+
+        <service id="unigen.twig.loader" class="Twig\Loader\FilesystemLoader">
+            <argument type="collection" />
+                <argument>%unigen.render.twig.template_dir%</argument>
+        </service>
     </services>
 </container>
