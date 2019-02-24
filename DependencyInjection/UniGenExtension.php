@@ -20,25 +20,14 @@ class UniGenExtension extends Extension
         $loader = new XmlFileLoader($container, new FileLocator(__DIR__ . '/../Resources/config'));
         $loader->load('unigen.xml');
 
-        $container->setParameter('unigen.parent_test_case', $config['config']['parent_test_case']);
-
-        $container->setParameter('unigen.mock_object_framework', $config['config']['mock_object_framework']);
-
-        $container->setParameter('unigen.test_target_path_pattern', $config['config']['test_target_path_pattern']);
-
-        $container->setParameter(
-            'unigen.test_target_path_replacement_pattern',
-            $config['config']['test_target_path_replacement_pattern']
-        );
-
+        $container->setParameter('unigen.test_case', $config['config']['test_case']);
+        $container->setParameter('unigen.mock_framework', $config['config']['mock_framework']);
+        $container->setParameter('unigen.path_pattern', $config['config']['path_pattern']);
+        $container->setParameter('unigen.path_replacement_pattern', $config['config']['path_replacement_pattern']);
         $container->setParameter('unigen.namespace_pattern', $config['config']['namespace_pattern']);
-
-        $container->setParameter(
-            'unigen.namespace_replacement_pattern',
-            $config['config']['namespace_replacement_pattern']
-        );
-
-        $container->setParameter('unigen.file_system.twig.template', $config['file_system']['twig']['template']);
-        $container->setParameter('unigen.file_system.twig.template_dir', $config['file_system']['twig']['template_dir']);
+        $container->setParameter('unigen.namespace_replacement_pattern',
+            $config['config']['namespace_replacement_pattern']);
+        $container->setParameter('unigen.render.twig.template', $config['render']['twig']['template']);
+        $container->setParameter('unigen.render.twig.template_dir', $config['render']['twig']['template_dir']);
     }
 }

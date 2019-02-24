@@ -16,7 +16,7 @@ class GeneratorTemplatePass implements CompilerPassInterface
             $container
                 ->getDefinition('twig.loader.filesystem')
                 ->addMethodCall('addPath', [
-                    $container->getParameter('unigen.file_system.twig.template_dir')
+                    $container->getParameter('unigen.render.twig.template_dir')
                 ]);
         }
     }

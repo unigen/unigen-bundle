@@ -5,29 +5,22 @@
            xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
 
     <services>
-        <service id="unigen.test_generator" class="UniGen\TestGenerator">
-            <argument type="service" id="unigen.config"/>
-            <argument type="service" id="unigen.renderer.twig"/>
-            <argument type="service" id="unigen.file_system.native"/>
-            <argument type="service" id="unigen.sut.provider.reflection"/>
-        </service>
-
         <service id="unigen.config" class="UniGen\Config">
-            <argument>%unigen.parent_test_case%</argument>
-            <argument>%unigen.mock_object_framework%</argument>
-            <argument>%unigen.test_target_path_pattern%</argument>
-            <argument>%unigen.test_target_path_replacement_pattern%</argument>
-            <argument>%unigen.namespace_pattern%</argument>
-            <argument>%unigen.namespace_replacement_pattern%</argument>
+            <argument type="collection">
+                <argument key="testCase">%unigen.test_case%</argument>
+                <argument key="mockFramework">%unigen.mock_framework%</argument>
+                <argument key="pathPattern">%unigen.path_pattern%</argument>
+                <argument key="pathPatternReplacement">%unigen.path_replacement_pattern%</argument>
+                <argument key="templateName">%unigen.render.twig.template%</argument>
+                <argument key="templateDirPath">%unigen.render.twig.template_dir%</argument>
+                <argument key="namespacePattern">%unigen.namespace_replacement_pattern%</argument>
+                <argument key="namespacePatternReplacement">%unigen.namespace_replacement_pattern%</argument>
+            </argument>
         </service>
 
         <service id="unigen.renderer.twig" class="UniGen\Renderer\TwigRenderer">
-            <argument>%unigen.file_system.twig.template%</argument>
             <argument type="service" id="twig"/>
             <argument type="service" id="unigen.config"/>
-            <call method="addDecorator">
-                <argument type="service" id="unigen.renderer.decorator.namespace"/>
-            </call>
         </service>
 
         <service id="unigen.renderer.decorator.namespace" class="UniGen\Renderer\Decorator\NamespaceDecorator">
@@ -46,13 +39,17 @@
             </call>
         </service>
 
-        <service id="unigen.command.generator" class="UniGen\Bundle\UniGenBundle\Command\TestGeneratorCommand">
-            <argument type="service" id="unigen.test_generator"/>
-            <tag name="console.command"/>
-        </service>
 
         <service id="unigen.util.scalar_render_filter" class="UniGen\Util\ScalarValueMapperTwigFilter">
             <tag name="twig.extension"/>
+        </service>
+
+        <service id="unigen.command.generator" class="Unigen\Command\TestGeneratorCommand">
+            <argument type="service" id="unigen.config"/>
+            <argument type="service" id="unigen.renderer.twig"/>
+            <argument type="service" id="unigen.file_system.native"/>
+            <argument type="service" id="unigen.sut.provider.reflection"/>
+            <tag name="console.command"/>
         </service>
 
         <service id="unigen.sut.check.trait" class="UniGen\Sut\Check\TraitCheck"/>
