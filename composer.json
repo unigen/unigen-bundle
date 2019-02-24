@@ -17,9 +17,9 @@
         "symfony"
     ],
     "require": {
-        "symfony/framework-bundle": "^3.4|^4.0",
+        "symfony/framework-bundle": "^3.0|^4.0",
         "unigen/unigen": "dev-feature/bin-command",
-        "symfony/console": "^3.4|^4.0"
+        "symfony/console": "^3.0|^4.0"
     },
     "autoload": {
         "psr-4": { "UniGen\\Bundle\\UniGenBundle\\": "" }

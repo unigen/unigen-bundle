@@ -41,7 +41,7 @@
 
         <service id="unigen.util.scalar_render_filter" class="UniGen\Util\ScalarValueMapperTwigFilter"/>
 
-        <service id="unigen.command.generator" class="Unigen\Command\TestGeneratorCommand">
+        <service id="unigen.command.generator" class="UniGen\Command\TestGeneratorCommand">
             <argument type="service" id="unigen.config"/>
             <argument type="service" id="unigen.renderer.twig"/>
             <argument type="service" id="unigen.file_system.native"/>
