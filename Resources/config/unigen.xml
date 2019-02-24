@@ -39,7 +39,6 @@
             </call>
         </service>
 
-
         <service id="unigen.util.scalar_render_filter" class="UniGen\Util\ScalarValueMapperTwigFilter"/>
 
         <service id="unigen.command.generator" class="Unigen\Command\TestGeneratorCommand">
@@ -58,13 +57,12 @@
         <service id="unigen.sut.adapter.reflection_dependency"
                  class="UniGen\Sut\Adapter\ReflectionSutDependencyAdapter"/>
 
-
         <service id="unigen.twig" class="Twig\Environment" public="true">
             <argument type="service" id="unigen.twig.loader" />
+            <argument/>
             <call method="addExtension">
                 <argument type="service" id="unigen.util.scalar_render_filter"/>
             </call>
-            <argument/>
         </service>
 
         <service id="unigen.twig.loader" class="Twig\Loader\FilesystemLoader">
