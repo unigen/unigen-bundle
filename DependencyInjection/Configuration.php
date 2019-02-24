@@ -37,7 +37,7 @@ class Configuration implements ConfigurationInterface
                             ->children()
                                 ->scalarNode('template')->defaultValue('sut_template.php.twig')->end()
                                 ->scalarNode('template_dir')
-                                ->defaultValue(__DIR__ . '/../Resources/views')->end()
+                                ->defaultValue('%kernel.project_dir%/vendor/unigen/unigen/src/Resources/views')->end()
                             ->end()
                          ->end()
                 ->end();

@@ -17,7 +17,7 @@ class UniGenExtension extends Extension
         $configuration = new Configuration();
         $config = $this->processConfiguration($configuration, $configs);
 
-        $loader = new XmlFileLoader($container, new FileLocator(__DIR__ . '/../Resources/config'));
+        $loader = new XmlFileLoader($container, new FileLocator(__DIR__ . '/../../Resources/config'));
         $loader->load('unigen.xml');
 
         $container->setParameter('unigen.test_case', $config['config']['test_case']);
