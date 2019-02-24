@@ -24,6 +24,3 @@ UniGenBundle is a Symfony bundle that integrates [UniGen](https://github.com/uni
 
 ### License
 This bundle is available under the MIT license.
-
-
-
