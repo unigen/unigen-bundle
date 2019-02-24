@@ -13,7 +13,7 @@
                 <argument key="pathPatternReplacement">%unigen.path_replacement_pattern%</argument>
                 <argument key="templateName">%unigen.render.twig.template%</argument>
                 <argument key="templateDirPath">%unigen.render.twig.template_dir%</argument>
-                <argument key="namespacePattern">%unigen.namespace_replacement_pattern%</argument>
+                <argument key="namespacePattern">%unigen.namespace_pattern%</argument>
                 <argument key="namespacePatternReplacement">%unigen.namespace_replacement_pattern%</argument>
             </argument>
         </service>
@@ -61,15 +61,15 @@
                  class="UniGen\Sut\Adapter\ReflectionSutDependencyAdapter"/>
 
         <service id="unigen.twig" class="Twig\Environment" public="true">
-            <argument type="service" id="unigen.twig.loader" />
+            <argument type="service" id="unigen.twig.loader"/>
             <call method="addExtension">
                 <argument type="service" id="unigen.util.scalar_render_filter"/>
             </call>
         </service>
 
         <service id="unigen.twig.loader" class="Twig\Loader\FilesystemLoader">
-            <argument type="collection" />
-                <argument>%unigen.render.twig.template_dir%</argument>
+            <argument type="collection"/>
+            <argument>%unigen.render.twig.template_dir%</argument>
         </service>
     </services>
 </container>
