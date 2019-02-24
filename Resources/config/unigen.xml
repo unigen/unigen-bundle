@@ -21,6 +21,9 @@
         <service id="unigen.renderer.twig" class="UniGen\Renderer\TwigRenderer">
             <argument type="service" id="unigen.twig"/>
             <argument type="service" id="unigen.config"/>
+            <call method="addDecorator">
+                <argument type="service" id="unigen.renderer.decorator.namespace"/>
+            </call>
         </service>
 
         <service id="unigen.renderer.decorator.namespace" class="UniGen\Renderer\Decorator\NamespaceDecorator">
