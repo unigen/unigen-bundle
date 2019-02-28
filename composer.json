@@ -19,7 +19,7 @@
     "require": {
         "php": ">=7.0",
         "symfony/framework-bundle": "^2.0|^3.0|^4.0",
-        "unigen/unigen": "^1.0.0"
+        "unigen/unigen": "dev-feature/bin-command"
     },
     "autoload": {
         "psr-4": { "UniGen\\Bundle\\UniGenBundle\\": "" }
