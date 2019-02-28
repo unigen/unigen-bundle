@@ -66,3 +66,5 @@ class TestGeneratorTest extends TestCase
     }
 }
 ```
+
+Run `bin/console unigen:generate` to get more help if needed

@@ -17,15 +17,11 @@
         "symfony"
     ],
     "require": {
-        "symfony/framework-bundle": "^3.4|^4.0",
-        "unigen/unigen": "^0.2.0",
-        "symfony/console": "^3.4|^4.0"
+        "php": ">=7.0",
+        "symfony/framework-bundle": "^2.0|^3.0|^4.0",
+        "unigen/unigen": "dev-feature/bin-command"
     },
     "autoload": {
         "psr-4": { "UniGen\\Bundle\\UniGenBundle\\": "" }
-    },
-    "require-dev": {
-        "phpunit/phpunit": "^5.5|^6.5|^7.0",
-        "mockery/mockery": "^1.0|^1.2"
     }
 }
