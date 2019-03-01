@@ -8,11 +8,11 @@ UniGenBundle is a Symfony bundle that integrates [UniGen](https://github.com/uni
 
 ### Features
 
-* Support mockery and phpunit mocks
-* Configurable test source target directory pattern
-* Configurable namespace pattern
-* Template and template directory path can be configure
-* Configurable parent test case
+* Supports mockery and phpunit mocks
+* Configurable test target directory
+* Configurable namespace
+* Configurable templates
+* Configurable test case
 
 ### Documentation
 
